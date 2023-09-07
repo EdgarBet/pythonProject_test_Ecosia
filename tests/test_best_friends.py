@@ -107,35 +107,53 @@ def test_shopping_cart():
 #     browser.element('.btn.btn-primary').click()
 
 def test_brain():
+    # відкриваю браузер
     browser.open('https://duckduckgo.com/')
+    # роблю повний екран
     browser.driver.maximize_window()
+    # ввожу в поле пошуку запит 'brain магазин'
     s(by.name('q')).type('brain магазин').press_enter()
     time.sleep(2)
+    # перехожу по першому посиланню
     ss(".LnpumSThxEWMIsDdAT17")[0].click()
     time.sleep(2)
+    # перехожу для авторизації по кнопці Увійти
     ss(by.text('Увійти'))[0].click()
     time.sleep(2)
+    # ввожу в поле телефон номер телефону в повному форматі
     ss('#modal-login-phone-field')[0].type('+38 (096) 607-20-14').press_tab()
     time.sleep(2)
+    # ввожу в поле пароль
     ss('#modal-login-password-field')[0].type('769f3858b5')
     time.sleep(2)
+    # натискаю кнопку Увійти в авторизації
     ss(by.text('Увійти'))[2].click()
     time.sleep(2)
+    # обираю категорію товарів Ноутбуки
     s(by.text("Ноутбуки і комп'ютери")).click()
     time.sleep(2)
+    # натискаю кнопку Перейти
     ss(by.text('Перейти'))[0].click()
     time.sleep(2)
+    # обираю обраний Ноутбук
     s('[href="/ukr/Noutbuk_Lenovo_V15_82KB0006RA-p827070.html"]').click()
     time.sleep(2)
+    # захожу в сам ноутбук
     s('[data-articul="82KB0006RA"]').click()
     time.sleep(1)
+    # додаю його в кошик
     s('//*[@id="br-pr-2"]/a').click()
+    # заходжу в кошик
     s('body > header > div.header-bottom > div > div > div.cart.js-cart.br-h-cart > button').click()
     time.sleep(1)
+    # збільшую на 1 товар
     ss('.increment')[1].click()
     time.sleep(1)
+    # видаляю з кошика това
     s('//*[@id="cart_list"]/div[2]/div/div[2]/div/button').click()
     time.sleep(2)
+    # підтверджую видалення
     s(by.text('Видалити не зберігаючи')).click()
     time.sleep(2)
+    # закриваю браузер
     browser.quit()
